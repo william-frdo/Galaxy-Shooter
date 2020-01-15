@@ -6,6 +6,10 @@ public class Player : MonoBehaviour
 {
     public bool canTripleShot = false;
     public bool isSpeedBoostActive = false;
+    public int lives = 3;
+
+    [SerializeField]
+    private GameObject _explosionPrefab;
 
     [SerializeField]
     private GameObject _laserPrefab;
@@ -87,6 +91,17 @@ public class Player : MonoBehaviour
         else if (transform.position.x < -9.5F)
         {
             transform.position = new Vector3(9.5F, transform.position.y, 0);
+        }
+    }
+
+    public void Damage()
+    {
+        lives--;
+
+        if (lives < 1)
+        {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 

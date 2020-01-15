@@ -17,10 +17,5 @@ public class TripleShot : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.up * _speed * Time.deltaTime);
-
-        if (transform.position.y > 5.57)
-        {
-            Destroy(this.gameObject);
-        }
     }
 }
