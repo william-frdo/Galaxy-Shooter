@@ -47,7 +47,7 @@ public class Powerup : MonoBehaviour
                 // Enable shields
                 if (powerupID == 2)
                 {
-                    player.TripleShotPowerupOn();
+                    player.EnableShields();
                 }
             }
             
