@@ -9,7 +9,7 @@ public class EnemyExplosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(this.gameObject, 4F);
     }
 
     // Update is called once per frame
