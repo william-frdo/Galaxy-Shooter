@@ -6,9 +6,11 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
     private GameObject _enemyExplosionPrefab;
-
+    [SerializeField]
+    private AudioClip _clip;
+    [SerializeField]
     private float _speed = 5.0F;
-    private UIManager _uiManager;
+    private UIManager _uiManager;    
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
+    {        
         if (other.tag == "Laser")
         {
             if (other.transform.parent != null)
@@ -47,6 +49,7 @@ public class EnemyAI : MonoBehaviour
 
             Destroy(other.gameObject);
             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 1F);
             Destroy(this.gameObject);
         }
         else if (other.tag == "Player")
@@ -63,6 +66,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 1F);
             Destroy(this.gameObject);            
         }
     }
